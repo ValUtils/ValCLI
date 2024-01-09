@@ -1,15 +1,20 @@
 [project]
-name = "ValImgs"
+name = "ValCLI"
 version = "0.0.0"
 readme = "README.md"
 authors = [{ name = "PWall" }]
 license = {text = "GPL-3.0"}
 keywords = ["valorant", "api", "auth"]
-dependencies = ["importlib_resources"]
+dependencies = [
+    "typer[all]",
+    "ValLib",
+    "ValVault",
+    "ValConfig",
+]
 requires-python = ">=3.8"
 
 [project.urls]
-Homepage = "https://github.com/ValUtils/ValImgs"
+Homepage = "https://github.com/ValUtils/ValCLI"
 
 [tool.bumpver]
 current_version = "0.0.0"
@@ -24,6 +29,3 @@ push = true
     'current_version = "{version}"',
     'version = "{version}"',
 ]
-
-[tool.setuptools.package-data]
-"ValLib.imgs" = ["*.ico", "*.png"]
