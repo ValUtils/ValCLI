@@ -19,10 +19,8 @@ app.add_typer(match_typer, name="match")
 
 @app.command()
 def launch(username: UserName):
-    from ValChange.config import get_config
-    from ValChange.main import change
-    cUser = get_config(username)
-    change(cUser)
+    from ValChange import launch
+    launch()
 
 
 def tui():
