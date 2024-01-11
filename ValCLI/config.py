@@ -1,6 +1,6 @@
 import typer
 
-from ValConfig import config as cfg
+from ValManager import config as cfg
 
 from .user import UserName, user_get
 

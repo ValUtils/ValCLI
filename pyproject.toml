@@ -10,7 +10,7 @@ dependencies = [
     "rich",
     "ValLib",
     "ValVault",
-    "ValConfig",
+    "ValManager",
 ]
 requires-python = ">=3.8"
 

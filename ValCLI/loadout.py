@@ -1,6 +1,6 @@
 import typer
 
-from ValConfig import loadout as ldout
+from ValManager import loadout as ldout
 
 from .user import UserName, user_get
 
