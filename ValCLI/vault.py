@@ -37,3 +37,10 @@ def add(username: str, alias: str = ""):
     password = typer.prompt("Password: ", hide_input=True)
     db.save_user(username, password, alias)
     db.db.save()
+
+
+@vault.command("list")
+def list_users():
+    db = init_vault()
+    res = "\n".join(db.users)
+    print(res)
