@@ -1,4 +1,6 @@
 import typer
+from rich.console import Console
+from rich.table import Table
 
 from ValVault.terminal import init_vault
 
@@ -41,6 +43,11 @@ def add(username: str, alias: str = ""):
 
 @vault.command("list")
 def list_users():
+    t = Table(title="Users")
+    t.add_column("Alias", no_wrap=True)
+    t.add_column("Username", no_wrap=True)
     db = init_vault()
-    res = "\n".join(db.users)
-    print(res)
+    for alias, users in zip(db.aliases, db.users):
+        t.add_row(alias, users)
+    console = Console()
+    console.print(t)
