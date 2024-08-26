@@ -24,11 +24,17 @@ def delete(username: UserName):
 
 
 @vault.command()
-def auth(username: UserName, remember: bool = True, force: bool = False):
+def auth(
+    username: UserName, remember: bool = True, force: bool = False, legacy: bool = False
+):
     db = init_vault()
     entry = db.find_one(username=username)
     if force:
         entry._auth = None
+    if legacy:
+        from ValLib.auth import legacy_auth
+        entry.auth = legacy_auth(entry.as_user(), remember)
+        return
     entry.get_auth(remember, True)
     db.db.save()
 
